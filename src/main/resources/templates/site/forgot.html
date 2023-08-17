@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png" />
+    <title>Login</title>
+    <link rel="stylesheet" th:href="@{~/assets/css/login.css}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        .error {
+            font-style: italic;
+            color: red;
+        }
+
+        .ol {
+            margin-left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="main">
+    <div th:if="${message != null}" class="alt row alert alert-success">
+        <span th:text="${message}"></span>
+    </div>
+    <a th:href="@{index}" class="logo mt-4">
+        <img th:src="@{~/assets/img/logo.png}" alt="">
+    </a>
+    <div class="head">
+        <h1>Forgot your password?</h1>
+        <p>
+            Follow these simple steps to reset your account:
+            <ol class="ol">
+                <li>Enter your email.</li>
+                <li>Visit your email account, open the email sent by Fruit Shop.</li>
+                <li>Follow the instruction in the mail to change.</li>
+            </ol>
+        </p>
+    </div>
+    <form th:action="@{/forgot}" method="post">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" name="email" placeholder="Your Email">
+        </div>
+        <button class="btn float-right w-50" style="background-color: var(--main-color); color: white;">Get new password</button>
+    </form>
+    <hr>
+    <div class="text-center">
+        <a th:href="@{~/oauth2/authorization/facebook}" class="btn border ml-1 mr-1">
+            <i class=" bi bi-facebook"></i>
+        </a>
+        <a th:href="@{~/oauth2/authorization/google}" class="btn border ml-1 mr-1">
+            <i class=" bi bi-google"></i>
+        </a>
+        <a href="#" class="btn border ml-1 mr-1">
+            <i class=" bi bi-instagram"></i>
+        </a>
+        <a th:href="@{~/oauth2/authorization/github}" class="btn border ml-1 mr-1">
+            <i class=" bi bi-github"></i>
+        </a>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Category List</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+<h1>Category List</h1>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  <tbody>
+  <!-- Loop through categories -->
+  <tr th:each="category : ${page}">
+    <td th:text="${category.categoryId}"></td>
+    <td th:text="${category.name}"></td>
+  </tr>
+  </tbody>
+</table>
+<div>
+  <!-- Pagination -->
+  <a th:href="@{/pager/list?pageNo=0}">First</a>
+  <a th:href="@{'/pager/list?pageNo='+${page.number - 1}}">Previous</a>
+  <span th:text="${page.number + 1}"></span>
+  <a th:href="@{'/pager/list?pageNo=' + ${page.number + 1}}">Next</a>
+  <a th:href="@{'/pager/list?pageNo='+ ${page.getTotalPages() - 1}}">Last</a>
+</div>
+</body>
+</html>

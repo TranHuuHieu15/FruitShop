@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="shortcut icon" type="image/png" th:href="@{assets/img/favicon.png}"/>
+    <title>Register</title>
+    <link rel="stylesheet" th:href="@{~/assets/css/register.css}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        .error {
+            font-style: italic;
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+<div class="main">
+    <a th:href="@{index}" class="logo mt-4">
+        <img th:src="@{~/assets/img/logo.png}" alt="">
+    </a>
+    <div class="head">
+        <h1>Sign up</h1>
+        <p>Already have an account? <a th:href="@{/login}" class="mauChinh">Sign in</a></p>
+    </div>
+    <form th:action="@{/register}" method="post" th:object="${account}">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" th:field="*{username}" class="form-control" aria-describedby="usernameHid" name="username"
+                   placeholder="Username">
+            <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" th:class="${#fields.hasErrors('username')}?error" id="usernameHid" class="form-text text-muted">Username is invalid</small>
+        </div>
+        <div class="form-group">
+            <label for="fullname">Fullname</label>
+            <input type="text" id="fullname" th:field="*{fullname}" class="form-control" aria-describedby="fullnameHid" name="username"
+                   placeholder="Username">
+            <small th:if="${#fields.hasErrors('fullname')}" th:errors="*{fullname}" th:class="${#fields.hasErrors('fullname')}?error" id="fullnameHid" class="form-text text-muted">Username is invalid</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" th:field="*{password}" class="form-control" aria-describedby="passwordHid" name="password"
+                   placeholder="Password">
+            <small id="passwordHid" th:if="${#fields.hasErrors('password')}" th:errors="*{password}" th:class="${#fields.hasErrors('password')}?error" class="form-text text-muted">Password is invalid</small>
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" th:field="*{email}" class="form-control" aria-describedby="emailHid" name="email"
+                   placeholder="Email">
+            <small id="emailHid" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" th:class="${#fields.hasErrors('email')}?error" class="form-text text-muted">Email is invalid</small>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone number</label>
+            <input type="text" id="phone" class="form-control" th:field="*{phone}" aria-describedby="phoneHid" name="phone"
+                   placeholder="Phone Number">
+            <small id="phoneHid" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" th:class="${#fields.hasErrors('phone')}?error" class="form-text text-muted">Phone number is invalid</small>
+        </div>
+        <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="hehe">
+            <label for="hehe" class="form-check-label">I agree to the <span class="" style="color: var(--main-color);">Terms
+          of Service</span> and <span class="" style="color: var(--main-color);">Privacy Policy</span>.</label>
+        </div>
+        <button class="btn" style="background-color: var(--main-color); color: white;">Sign in</button>
+    </form>
+</div>
+</body>
+
+</html>
